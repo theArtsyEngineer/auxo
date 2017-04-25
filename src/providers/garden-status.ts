@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { Chart } from 'chart.js';
 import 'rxjs/add/operator/map';
 
 /*
@@ -40,7 +39,7 @@ export class GardenStatus {
   }
 
   loadPlants(currGarden, user){
-    /* return an array of plants that are in currGarden */
+    /* return an array of plant objects that are in currGarden */
   }
 
   loadLocation(currGarden, user){
@@ -48,11 +47,11 @@ export class GardenStatus {
   }
 
   loadRecomm(currGarden, user){
-    /* return an array of suggested plants based on user's geolocation */
+    /* return an array of suggested plant objects based on user's geolocation */
   }
 
   loadTasks(currGarden, user){
-     /* return an array of tasks that need to be completed for all the user's gardens */
+     /* return an array of task objects that need to be completed for all the user's gardens */
   }
 
 }

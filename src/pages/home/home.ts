@@ -1,5 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ModalController } from 'ionic-angular';
+import { GardenModal } from '../gardenModal/gardenModal';
+
 import { Chart } from 'chart.js';
 
 import { GardenStatus } from '../../providers/garden-status';
@@ -13,12 +15,13 @@ export class HomePage {
 
   @ViewChild('doughnutCanvas') doughnutCanvas;
 
+  currGarden: any;
   moisture: any;
   notif: any[];
 
-  constructor(public navCtrl: NavController, public gardenStatus: GardenStatus) {
-
-  }
+  constructor(public navCtrl: NavController, 
+              public modalCtrl: ModalController, 
+              public gardenStatus: GardenStatus) {}
 
   ionViewDidLoad(){
 
@@ -29,7 +32,7 @@ export class HomePage {
 
   loadMoisture() {
     
-    var moisture_level = 0.70;
+    var moisture_level = 0.60;
 
     this.moisture = new Chart(this.doughnutCanvas.nativeElement, {
             type: 'doughnut',
@@ -68,7 +71,12 @@ export class HomePage {
   }
 
   selectGarden(currGarden) {
-    alert("Success")
+    let gardenSelect = this.modalCtrl.create(GardenModal, {
+      currGarden: currGarden
+    });
+
+    gardenSelect.present();
+
   }
 
   startTask(task){

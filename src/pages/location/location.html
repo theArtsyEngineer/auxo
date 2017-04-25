@@ -1,0 +1,31 @@
+<ion-content class="location">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>LOCATION</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 setupQ">
+                <h6>WHERE WILL YOUR</h6> 
+                <h6>GARDEN BE LOCATED?</h6>
+            </div>
+        </div>
+
+        <div class="row-fluid">
+            <div class="col-xs-12">
+                <img (click)="selectOut();" class="shadow center-block" src="assets/outdoors.png" alt="">
+            </div>
+        </div>
+
+        <div class="row-fluid">
+            <div class="col-xs-12">
+                <img (click)="selectIn();" class="shadow center-block" src="assets/indoors.png" alt="">
+            </div>
+        </div>
+
+        <button (click)="next();" class="btn btn-next center-block">NEXT</button>
+
+    </div>
+</ion-content>

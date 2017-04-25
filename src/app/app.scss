@@ -44,9 +44,85 @@ $auxo_green: #93CE5C;
     height: 45px;
 }
 
-body {
-  background-image: url("assets/white_bg.png");
-  background-size: cover;
+.btn-next {
+      color: $auxo_green;
+      background-color: white;
+      border: none;
+      width: 85%;
+      height: 45px;
+      box-shadow: 0px 2px 2px rgba(0,0,0,0.16);
+      font-size: 17px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .btn-next:hover,
+    .btn-next:focus,
+    .btn-next:active  {
+      color: $auxo_green;
+      background-color: white;
+      border: none;
+      width: 85%;
+      height: 45px;
+    }
+
+.btn-done {
+        color: #50AED0;
+        background-color: white;
+        border: none;
+        width: 85%;
+      height: 45px;
+      box-shadow: 0px 2px 2px rgba(0,0,0,0.16);
+      font-size: 17px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .btn-done:hover,
+    .btn-done:focus,
+    .btn-done:active  {
+        color: #50AED0;
+        background-color: white;
+        border: none;
+        width: 85%;
+      height: 45px;
+    }
+
+h1 {
+  margin-top: 20%;
+  color: white;
+  font-weight: 700;
+  font-size: 36px;
+  text-align: center;
+}
+
+h2 {
+  margin-top: 20%;
+  color: white;
+  font-weight: 700;
+  font-size: 23px;
+  text-align: center;
+}
+
+h3 {
+  color: white;
+  font-weight: 600;
+  font-size: 13px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+h6 {
+  color:#52772C;
+  font-size: 12px;
+  font-weight: 800;
+  text-align: center;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.shadow {
+  box-shadow: 0px 2px 2px rgba(0,0,0,0.16);
 }
 
 ::-webkit-scrollbar,
