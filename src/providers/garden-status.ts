@@ -193,4 +193,27 @@ export class GardenStatus {
      /* return an array of tasks that need to be completed for all the user's gardens */
   };
 
+  // Inserts a new garden record into the database
+  insertNewGarden(gardenID, userID, plantIDArray, location){
+    var link = 'http://34.207.150.80:8080/gardeninsert';
+    var headers = new Headers({ 'Content-Type': 'application/json' });
+    var options = new RequestOptions({ headers: headers });
+    var body = JSON.stringify({
+       garden: gardenID,
+       user: userID,
+       plants: plantIDArray,
+       location: location // 0 means outside, 1 means inside
+      });
+
+    this.http.post(link, body, options)
+      .subscribe(
+        data => {
+          console.log("INSERT NEW GARDEN STATUS ");
+          console.log(data);
+        },
+        error => {
+        console.log("couldn't insert new garden into database");
+      });
+  }
+
 }

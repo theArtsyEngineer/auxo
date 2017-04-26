@@ -30,8 +30,10 @@ export class HomePage {
     this.gardenStatus.loadMoisture(this.garden, this.user);
     this.gardenStatus.loadWeather(this.garden, this.user);
     this.gardenStatus.loadPh(this.garden, this.user);
+    this.gardenStatus.loadPlants(this.garden, this.user);
     this.gardenStatus.loadLocation(this.garden, this.user);
     this.gardenStatus.loadRecomm(this.garden, this.user);
+    //this.gardenStatus.insertNewGarden(5, 3, [1,2], 0); // garden id, user id, array of plant ids, outside or inside
   }
 
   loadMoisture() {
