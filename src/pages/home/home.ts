@@ -18,7 +18,8 @@ export class HomePage {
   recomm: any[];
   user: any;
   garden: any;
-
+  moisture_level: any;
+  
   constructor(public navCtrl: NavController, public gardenStatus: GardenStatus) {
   }
 
@@ -27,7 +28,7 @@ export class HomePage {
     this.loadMoisture();
     this.loadTasks();
 
-    this.gardenStatus.loadMoisture(this.garden, this.user);
+    //this.gardenStatus.loadMoisture(this.garden, this.user);
     this.gardenStatus.loadWeather(this.garden, this.user);
     this.gardenStatus.loadPh(this.garden, this.user);
     this.gardenStatus.loadPlants(this.garden, this.user);
@@ -38,14 +39,14 @@ export class HomePage {
   }
 
   loadMoisture() {
-    
-    var moisture_level = 0.70;
+    this.moisture_level = this.gardenStatus.loadMoisture(this.garden, this.user);
+    //var moisture_level = 0.70;
 
     this.moisture = new Chart(this.doughnutCanvas.nativeElement, {
             type: 'doughnut',
             data: {
                 datasets: [{
-                    data: [moisture_level, 1 - moisture_level],
+                    data: [this.moisture_level, 1 - this.moisture_level],
                     backgroundColor: ['#2DAAE1', 'transparent'],
                     borderWidth: [0,0]
                 }]
