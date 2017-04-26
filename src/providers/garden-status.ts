@@ -150,7 +150,11 @@ export class GardenStatus {
         data => {
           console.log("PLANT LOCATION DATA: ");
 
-          var location = JSON.parse(data['_body']).location;
+          if (data != null)
+          {
+            var location = JSON.parse(data['_body']).location;
+          }
+          
           console.log(location);
 
           return location; // True means the garden is outside, false means it is inside
@@ -181,7 +185,7 @@ export class GardenStatus {
           var plants = JSON.parse(data['_body']).data;
           console.log(plants);
 
-          return plants
+          return plants;
         },
         error => {
         console.log("couldn't get plant recommendation");
@@ -208,12 +212,36 @@ export class GardenStatus {
     this.http.post(link, body, options)
       .subscribe(
         data => {
-          console.log("INSERT NEW GARDEN STATUS ");
+          console.log("INSERT NEW GARDEN STATUS: ");
           console.log(data);
         },
         error => {
         console.log("couldn't insert new garden into database");
       });
-  }
+  };
+
+  displayAllPlants(){
+    var link = 'http://34.207.150.80:8080/plantlist';
+    var headers = new Headers({ 'Content-Type': 'application/json' });
+    var options = new RequestOptions({ headers: headers });
+
+
+    this.http.post(link, null, options)
+      .subscribe(
+        data => {
+          console.log("ENTIRE PLANT LIST: ");
+
+          var plants = JSON.parse(data['_body']).data;
+          console.log(plants);
+
+          return plants
+        },
+        error => {
+        console.log("couldn't get entire plant list");
+        
+        return null;
+      });
+  };
+
 
 }
