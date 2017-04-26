@@ -19,7 +19,6 @@ export class GardenStatus {
   location: any;
   recomm: any[];
   tasks: any[];
-// todo make user object
   
   constructor(public http: Http) {
     //Put completed load methods with get requests in here
@@ -38,10 +37,23 @@ export class GardenStatus {
       .subscribe(
         data => {
           console.log("MOISTURE DATA: ");
-          console.log(data);
+          var moisture = JSON.parse(data['_body']).moisture;
+
+          if (moisture == -1) {
+            moisture = 0;
+          }
+          else {
+            moisture = (moisture/4095).toFixed(3);
+          }
+
+          console.log(moisture);
+
+          return moisture;
         },
         error => {
         console.log("couldn't get moisture reading");
+
+        return 0;
       });
   };
 
@@ -59,10 +71,16 @@ export class GardenStatus {
       .subscribe(
         data => {
           console.log("WEATHER DATA: ");
-          console.log(data);
+          
+          var weather = JSON.parse(data['_body']).weather;
+          console.log(weather);
+
+          return weather;
         },
         error => {
         console.log("couldn't get weather");
+
+        return null;
       });
   };
 
@@ -80,7 +98,11 @@ export class GardenStatus {
       .subscribe(
         data => {
           console.log("PH DATA: ");
-          console.log(data);
+
+          var ph = JSON.parse(data['_body']).ph;
+          console.log(ph);
+
+          return ph;
         },
         error => {
         console.log("couldn't get user's garden ph");
@@ -92,8 +114,6 @@ export class GardenStatus {
  */
   loadPlants(currGarden, user){
     /* return an array of plants that are in currGarden */
-
-    // TODO: doesnt work on server side yet
     var link = 'http://34.207.150.80:8080/garden';
     var headers = new Headers({ 'Content-Type': 'application/json' });
     var options = new RequestOptions({ headers: headers });
@@ -103,10 +123,16 @@ export class GardenStatus {
       .subscribe(
         data => {
           console.log("PLANTS IN GARDEN: ");
-          console.log(data);
+
+          var plants = JSON.parse(data['_body']).plants;
+
+          console.log(plants);
+          return plants;
         },
         error => {
         console.log("couldn't get user's garden");
+
+        return null;
       });
   };
 
@@ -123,10 +149,16 @@ export class GardenStatus {
       .subscribe(
         data => {
           console.log("PLANT LOCATION DATA: ");
-          console.log(data);
+
+          var location = JSON.parse(data['_body']).location;
+          console.log(location);
+
+          return location; // True means the garden is outside, false means it is inside
         },
         error => {
         console.log("couldn't get user's garden ph");
+
+        return false;
       });
   };
 
@@ -145,10 +177,15 @@ export class GardenStatus {
       .subscribe(
         data => {
           console.log("PLANT RECOMMENDATIONS: ");
-          console.log(data);
+
+          var plants = JSON.parse(data['_body']).data;
+          console.log(plants);
+
+          return plants
         },
         error => {
         console.log("couldn't get plant recommendation");
+        return null;
       });
   };
 
